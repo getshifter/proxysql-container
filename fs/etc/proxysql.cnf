@@ -1,0 +1,120 @@
+#file proxysql.cfg
+# http://www.hyperrealm.com/libconfig/libconfig_manual.html#Configuration-File-Grammar
+# https://github.com/sysown/proxysql/wiki/Configuration-file
+
+datadir="/var/lib/proxysql"
+errorlog="/dev/stderr"
+
+admin_variables=
+{
+	admin_credentials="PRSQL_ADMIN:PRSQL_PASSWORD"
+  hash_passwords=true
+	mysql_ifaces="0.0.0.0:PRSQL_A_PORT"
+#	refresh_interval=2000
+#	debug=true
+}
+
+mysql_variables=
+{
+	threads=4
+	max_connections=2048
+	default_query_delay=0
+	default_query_timeout=36000000
+	have_compress=true
+	poll_timeout=2000
+	interfaces="0.0.0.0:PRSQL_C_PORT"
+	default_schema="information_schema"
+	stacksize=1048576
+	server_version="MYSQL_VERSION"
+	connect_timeout_server=3000
+# make sure to configure monitor username and password
+# https://github.com/sysown/proxysql/wiki/Global-variables#mysql-monitor_username-mysql-monitor_password
+	monitor_username="monitor"
+	monitor_password="monitor"
+	monitor_history=600000
+	monitor_connect_interval=60000
+	monitor_ping_interval=10000
+	monitor_read_only_interval=1500
+	monitor_read_only_timeout=500
+	ping_interval_server_msec=120000
+	ping_timeout_server=500
+	commands_stats=true
+	sessions_sort=true
+	connect_retries_on_failure=10
+
+# add
+	monitor_enabled=false
+	default_charset="utf8mb4"
+}
+
+
+# defines all the MySQL servers
+mysql_servers =
+(
+	{
+		address = "MYSQL_HOSTNAME"
+  	port = MYSQL_PORT
+		hostgroup = 0
+		status = "ONLINE"
+		weight = 1
+		compression = 0
+		max_replication_lag = 10
+	}
+)
+
+
+# defines all the MySQL users
+mysql_users:
+(
+	@include "/etc/proxysql_user.cnf"
+)
+
+
+#defines MySQL Query Rules
+mysql_query_rules:
+(
+#	{
+#		rule_id=1
+#		active=1
+#		match_pattern="^SELECT .* FOR UPDATE$"
+#		destination_hostgroup=0
+#		apply=1
+#	},
+#	{
+#		rule_id=2
+#		active=1
+#		match_pattern="^SELECT"
+#		destination_hostgroup=1
+#		apply=1
+#	}
+)
+
+scheduler=
+(
+#  {
+#    id=1
+#    active=0
+#    interval_ms=10000
+#    filename="/var/lib/proxysql/proxysql_galera_checker.sh"
+#    arg1="0"
+#    arg2="0"
+#    arg3="0"
+#    arg4="1"
+#    arg5="/var/lib/proxysql/proxysql_galera_checker.log"
+#  }
+)
+
+
+mysql_replication_hostgroups=
+(
+#        {
+#                writer_hostgroup=30
+#                reader_hostgroup=40
+#                comment="test repl 1"
+#       },
+#       {
+#                writer_hostgroup=50
+#                reader_hostgroup=60
+#                comment="test repl 2"
+#        }
+)

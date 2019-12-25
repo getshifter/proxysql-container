@@ -1,0 +1,6 @@
+{
+  username = "MYSQL_USER"
+  password = "MYSQL_PASSWORD"
+  default_hostgroup = 0
+  active = 1
+}

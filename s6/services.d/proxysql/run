@@ -1,0 +1,4 @@
+#!/usr/bin/execlineb -P
+
+
+proxysql -f -M -D /var/lib/proxysql
