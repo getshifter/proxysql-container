@@ -17,3 +17,4 @@ for backend.
 - `MYSQL_PORT`: backend mysql port. `3306` by default.
 - `MYSQL_USER`: backend mysql user. `user` by default.
 - `MYSQL_PASSWORD`: backend mysql user. `passwd` by default.
+- `MYSQL_VERSION`: backend mysql version. `5.6.10a` by default.
