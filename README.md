@@ -1,5 +1,7 @@
 # proxysql-container
 
+[![getshifter/proxysql](http://dockeri.co/image/getshifter/proxysql)](https://hub.docker.com/r/getshifter/proxysql/)
+
 for single backend endpoint.
 
 envs
