@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ARG PRSQL_VERSION=2.0.10
+ARG PRSQL_VERSION=2.0.11
 ARG S6_VERSION=1.22.1.0
 
 RUN apt-get update && apt-get install -y ca-certificates \
