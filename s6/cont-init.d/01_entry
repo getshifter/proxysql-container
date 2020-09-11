@@ -4,7 +4,9 @@
 prsql_admin=${PRSQL_ADMIN:-admin}
 prsql_password=${PRSQL_PASSWORD:-admin}
 prsql_a_port=${PRSQL_A_PORT:-6032}
+prsql_a_bind=${PRSQL_A_BIND:-0.0.0.0}
 prsql_c_port=${PRSQL_C_PORT:-3306}
+prsql_c_bind=${PRSQL_C_BIND:-0.0.0.0}
 mysql_hostname=${MYSQL_HOSTNAME:-mysql}
 mysql_port=${MYSQL_PORT:-3306}
 mysql_version=${MYSQL_VERSION:-5.6.10a}
@@ -17,6 +19,8 @@ sed \
   -e "s/PRSQL_PASSWORD/${prsql_password}/g" \
   -e "s/PRSQL_A_PORT/${prsql_a_port}/g" \
   -e "s/PRSQL_C_PORT/${prsql_c_port}/g" \
+  -e "s/PRSQL_A_BIND/${prsql_a_bind}/g" \
+  -e "s/PRSQL_C_BIND/${prsql_c_bind}/g" \
   -e "s/MYSQL_HOSTNAME/${mysql_hostname}/g" \
   -e "s/MYSQL_PORT/${mysql_port}/g" \
   -e "s/MYSQL_VERSION/${mysql_version}/g" \

@@ -12,6 +12,8 @@ for proxysql.
 - `PRSQL_PASSWORD`: proxysql admin password. `admin` by default.
 - `PRSQL_A_PORT`: proxysql admin port. `6032` by default.
 - `PRSQL_C_PORT`: proxysql client port. `3306` by default.
+- `PRSQL_A_BIND`: proxysql admin listen interface. `0.0.0.0` by default.
+- `PRSQL_C_BIND`: proxysql client listen interface. `0.0.0.0` by default.
 
 for backend.
 
