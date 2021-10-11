@@ -31,5 +31,5 @@ jobs:
     - name: Build and Push the Docker image (TAG)
       if: ${{ github.ref != 'refs/heads/main' }}
       run: |
-        docker build . --file Dockerfile --tag getshifter/proxysql:${env.SOURCE_TAG}
-        docker push getshifter/proxysql:${env.SOURCE_TAG}
+        docker build . --file Dockerfile --tag getshifter/proxysql:${{ env.SOURCE_TAG}}
+        docker push getshifter/proxysql:${{ env.SOURCE_TAG}}
