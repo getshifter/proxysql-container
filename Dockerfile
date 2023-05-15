@@ -1,11 +1,11 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ARG PRSQL_VERSION=2.3.2
 ARG S6_VERSION=1.22.1.0
 
 RUN apt-get update && apt-get install -y ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 ADD https://github.com/sysown/proxysql/releases/download/v${PRSQL_VERSION}/proxysql_${PRSQL_VERSION}-ubuntu18_amd64.deb /tmp/
-RUN dpkg -i /tmp/proxysql_${PRSQL_VERSION}-ubuntu18_amd64.deb && rm /tmp/proxysql_${PRSQL_VERSION}-ubuntu18_amd64.deb
+RUN dpkg -i /tmp/proxysql_${PRSQL_VERSION}-ubuntu20_amd64.deb && rm /tmp/proxysql_${PRSQL_VERSION}-ubuntu18_amd64.deb
 
 ADD fs /
 ADD s6 /etc/
