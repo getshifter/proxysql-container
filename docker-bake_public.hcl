@@ -1,16 +1,15 @@
 variable "TAG" {
-  default = "latest"
+  default = "public"
 }
 
 group "default" {
   targets = [
-    "public",
+    "public_amd64",
     "public_arm64"
   ]
 }
 
-
-target "public" {
+target "public_amd64" {
   dockerfile = "Dockerfile"
   args = {
     S6_ARCH = "amd64"
@@ -19,16 +18,19 @@ target "public" {
     "linux/amd64"
   ]
   tags = [
-    "getshifter/proxysql:${TAG}"
+    "getshifter/proxysql:${TAG}_amd64",
   ]
 }
 
 target "public_arm64" {
-  inherits = ["public"]
+  dockerfile = "Dockerfile"
   args = {
     S6_ARCH = "aarch64"
   }
   platforms = [
-    "linux/amd64"
+    "linux/arm64"
+  ]
+  tags = [
+    "getshifter/proxysql:${TAG}_arm64",
   ]
 }
